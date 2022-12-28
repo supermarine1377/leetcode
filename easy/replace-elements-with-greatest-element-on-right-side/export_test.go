@@ -34,7 +34,7 @@ func Test_replaceElements02(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := replaceElementsO2(tt.args.arr); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("replaceElements() = %v, want %v", got, tt.want)
+				t.Errorf("replaceElementsO2() = %v, want %v", got, tt.want)
 			}
 		})
 	}
@@ -44,7 +44,7 @@ func Test_replaceElements01(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := replaceElementsO1(tt.args.arr); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("replaceElements() = %v, want %v", got, tt.want)
+				t.Errorf("replaceElementsO1() = %v, want %v", got, tt.want)
 			}
 		})
 	}
