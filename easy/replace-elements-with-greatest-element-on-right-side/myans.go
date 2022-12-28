@@ -83,9 +83,8 @@ func replaceElementsO1(arr []int) []int {
 	result[len(result)-1] = max
 
 	for i := len(arr) - 1; i > 0; i-- {
-		num := arr[i]
-		if num > max {
-			max = num
+		if arr[i] > max {
+			max = arr[i]
 		}
 		result[i-1] = max
 	}
