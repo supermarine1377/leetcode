@@ -55,4 +55,16 @@ func containsDuplicate(nums []int) bool {
 	return false
 }
 
+func containsDuplicateO1(nums []int) bool {
+	numMap := make(map[int]interface{})
+	for _, num := range nums {
+		isDuplicate := numMap[num]
+		if isDuplicate != nil {
+			return true
+		}
+		numMap[num] = struct{}{}
+	}
+	return false
+}
+
 // @lc code=end
