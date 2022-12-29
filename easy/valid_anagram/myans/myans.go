@@ -47,6 +47,7 @@ package myans
 
 import "sort"
 
+// O(NMlog(NM))
 func isAnagram(s string, t string) bool {
 	if len(s) != len(t) {
 		return false

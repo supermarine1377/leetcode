@@ -1,5 +1,6 @@
 package myans
 
+// Time complexity is O(N), but space complexity is higer than the sorting solution
 func isAnagram_2(s string, t string) bool {
 	if len(s) != len(t) {
 		return false
