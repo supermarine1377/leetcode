@@ -1,3 +1,25 @@
+// Write a function to find the longest common prefix string amongst an array of strings.
+
+// If there is no common prefix, return an empty string "".
+
+// Example 1:
+
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
+// Example 2:
+
+// Example 2:
+
+// Input: strs = ["dog","racecar","car"]
+// Output: ""
+// Explanation: There is no common prefix among the input strings.
+
+// Constraints:
+
+// 1 <= strs.length <= 200
+// 0 <= strs[i].length <= 200
+// strs[i] consists of only lowercase English letters.
+
 package myans
 
 // easy[14]
@@ -46,4 +68,34 @@ func findCommonPrefix(str1, str2 string) string {
 	}
 
 	return prefix
+}
+
+func longestCommonPrefixO2(strs []string) string {
+	if len(strs) == 0 {
+		return ""
+	}
+	if len(strs) == 1 {
+		return strs[0]
+	}
+	var n int
+	var result string
+	for {
+		if len(strs[0]) == 0 {
+			return ""
+		}
+		if n > len(strs[0])-1 {
+			return result
+		}
+		p := strs[0][n]
+		for _, str := range strs {
+			if len(str) < n+1 {
+				return result
+			}
+			if str[n] != p {
+				return result
+			}
+		}
+		result = result + string(p)
+		n++
+	}
 }

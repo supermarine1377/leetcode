@@ -2,15 +2,18 @@ package myans
 
 import "testing"
 
-func Test_longestCommonPrefix(t *testing.T) {
-	type args struct {
-		strs []string
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
+type args struct {
+	strs []string
+}
+
+type testcase struct {
+	name string
+	args args
+	want string
+}
+
+func getTestCases() []testcase {
+	return []testcase{
 		{
 			name: "1st",
 			args: args{
@@ -47,9 +50,22 @@ func Test_longestCommonPrefix(t *testing.T) {
 			want: "",
 		},
 	}
-	for _, tt := range tests {
+}
+
+func Test_longestCommonPrefix(t *testing.T) {
+	for _, tt := range getTestCases() {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := longestCommonPrefix(tt.args.strs); got != tt.want {
+				t.Errorf("longestCommonPrefix() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_longestCommonPrefixO2(t *testing.T) {
+	for _, tt := range getTestCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := longestCommonPrefixO2(tt.args.strs); got != tt.want {
 				t.Errorf("longestCommonPrefix() = %v, want %v", got, tt.want)
 			}
 		})
