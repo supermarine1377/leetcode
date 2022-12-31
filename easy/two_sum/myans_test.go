@@ -6,16 +6,19 @@ import (
 	"testing"
 )
 
-func Test_twoSum(t *testing.T) {
-	type args struct {
-		nums   []int
-		target int
-	}
-	tests := []struct {
-		name string
-		args args
-		want []int
-	}{
+type args struct {
+	nums   []int
+	target int
+}
+
+type testcase struct {
+	name string
+	args args
+	want []int
+}
+
+func getTestCases() []testcase {
+	return []testcase{
 		{
 			name: "1st",
 			args: args{
@@ -41,9 +44,26 @@ func Test_twoSum(t *testing.T) {
 			want: []int{1, 2},
 		},
 	}
-	for _, tt := range tests {
+}
+
+func Test_twoSum(t *testing.T) {
+	for _, tt := range getTestCases() {
 		t.Run(tt.name, func(t *testing.T) {
 			got := twoSum(tt.args.nums, tt.args.target)
+			// Orders doesn't matter
+			sort.Ints(got)
+			sort.Ints(tt.want)
+			if !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("error: want %v; but got %v", tt.want, got)
+			}
+		})
+	}
+}
+
+func Test_twoSum_slow(t *testing.T) {
+	for _, tt := range getTestCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			got := twoSum_slow(tt.args.nums, tt.args.target)
 			// Orders doesn't matter
 			sort.Ints(got)
 			sort.Ints(tt.want)

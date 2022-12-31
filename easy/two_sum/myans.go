@@ -21,3 +21,24 @@ func twoSum(nums []int, target int) []int {
 	}
 	return nil
 }
+
+func twoSum_slow(nums []int, target int) []int {
+	var ans [2]int
+	for i, left := range nums {
+		for j, right := range nums {
+			if i != j && left+right == target {
+				ans[0] = i
+				ans[1] = j
+			}
+		}
+	}
+	var result []int
+	if ans[0] > ans[1] {
+		result = append(result, ans[1])
+		result = append(result, ans[0])
+		return result
+	}
+	result = append(result, ans[0])
+	result = append(result, ans[1])
+	return result
+}
