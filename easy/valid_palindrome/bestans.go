@@ -82,5 +82,9 @@ func isPalindrome(s string) bool {
 		l++
 		r--
 	}
-	return true
+	// return true
+	if l == r {
+		return s[l-1] == s[r+1]
+	}
+	return s[l] == s[r]
 }
