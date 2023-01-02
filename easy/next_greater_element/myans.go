@@ -91,3 +91,32 @@ func nextGreaterElement_O2(nums1 []int, nums2 []int) []int {
 	}
 	return result
 }
+
+// Key observation:
+// Suppose we have a decreasing sequence followed by a greater number
+// For example [5, 4, 3, 2, 1, 6] then the greater number 6 is the next greater element for all previous numbers in the sequence
+
+// We use a stack to keep a decreasing sub-sequence, whenever we see a number x greater than stack.peek() we pop all elements less than x and for all the popped ones, their next greater element is x
+// For example [9, 8, 7, 3, 2, 1, 6]
+// The stack will first contain [9, 8, 7, 3, 2, 1] and then we see 6 which is greater than 1 so we pop 1 2 3 whose next greater element should be 6
+func nextGreaterElement_O_LenNum1_LenNum2(nums1 []int, nums2 []int) []int {
+	numMap := make(map[int]int)
+	var stack []int
+	for _, num := range nums2 {
+		for len(stack) != 0 && stack[len(stack)-1] < num {
+			numMap[stack[len(stack)-1]] = num
+			stack = stack[:len(stack)-1]
+		}
+		stack = append(stack, num)
+	}
+	var reuslts []int
+	for i := 0; i < len(nums1); i++ {
+		numInMap, ok := numMap[nums1[i]]
+		if !ok {
+			reuslts = append(reuslts, -1)
+			continue
+		}
+		reuslts = append(reuslts, numInMap)
+	}
+	return reuslts
+}

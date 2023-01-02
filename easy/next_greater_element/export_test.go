@@ -46,3 +46,13 @@ func Test_nextGreaterElement_O2(t *testing.T) {
 		})
 	}
 }
+
+func Test_nextGreaterElement_O_LenNum1_LenNum2(t *testing.T) {
+	for _, tt := range getTestCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := nextGreaterElement_O_LenNum1_LenNum2(tt.args.nums1, tt.args.nums2); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("nextGreaterElement_O2() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
