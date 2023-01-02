@@ -65,26 +65,16 @@ import "unicode"
 func isPalindrome(s string) bool {
 	l, r := 0, len(s)-1
 	for l < r {
-		if !unicode.IsLetter(rune(s[l])) {
+		if !unicode.IsLetter(rune(s[l])) && !unicode.IsDigit(rune(s[l])) {
 			l++
-			continue
-		}
-		if !unicode.IsLetter(rune(s[r])) {
+		} else if !unicode.IsLetter(rune(s[r])) && !unicode.IsNumber(rune(s[r])) {
 			r--
-			continue
-		}
-		sl := unicode.ToLower(rune(s[l]))
-		sr := unicode.ToLower(rune(s[r]))
-
-		if sl != sr {
+		} else if unicode.ToLower(rune(s[l])) == unicode.ToLower(rune(s[r])) {
+			l++
+			r--
+		} else {
 			return false
 		}
-		l++
-		r--
 	}
-	// return true
-	if l == r {
-		return s[l-1] == s[r+1]
-	}
-	return s[l] == s[r]
+	return true
 }
