@@ -86,3 +86,27 @@ func removeDuplicate(s string) string {
 	}
 	return stack
 }
+
+func removeDuplicates_ON1(s string) string {
+	var stack string
+	for _, ss := range s {
+		if len(stack) > 0 && stack[len(stack)-1] == byte(ss) {
+			stack = stack[:len(stack)-1]
+		} else {
+			stack = stack + string(ss)
+		}
+	}
+	return stack
+}
+
+func removeDuplicates_ON1_fastest(s string) string {
+	stack := make([]rune, 0, len(s))
+	for _, r := range s {
+		if len(stack) > 0 && stack[len(stack)-1] == r {
+			stack = stack[:len(stack)-1]
+		} else {
+			stack = append(stack, r)
+		}
+	}
+	return string(stack)
+}
