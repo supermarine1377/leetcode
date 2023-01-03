@@ -45,3 +45,36 @@ func Test_backspaceCompare(t *testing.T) {
 		})
 	}
 }
+
+func Test_outputImproved(t *testing.T) {
+	type args struct {
+		s string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "1st",
+			args: args{
+				s: "ab#c",
+			},
+			want: "ac",
+		},
+		{
+			name: "2nd",
+			args: args{
+				s: "a#b#",
+			},
+			want: "",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := outputImproved(tt.args.s); got != tt.want {
+				t.Errorf("outputImproved() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}

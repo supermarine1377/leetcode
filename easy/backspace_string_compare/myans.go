@@ -21,3 +21,21 @@ func output(s string) string {
 	}
 	return result
 }
+
+// Time Complexity: O(N), Space Complexity: O(1)
+func outputImproved(s string) string {
+	var result string
+	var skip int
+	for i := len(s) - 1; i > -1; i-- {
+		if string(s[i]) == "#" {
+			skip++
+			continue
+		}
+		if skip > 0 {
+			skip--
+			continue
+		}
+		result = string(s[i]) + result
+	}
+	return result
+}
