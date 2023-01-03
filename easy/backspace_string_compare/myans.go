@@ -25,14 +25,14 @@ func output(s string) string {
 // Time Complexity: O(N), Space Complexity: O(1)
 func outputImproved(s string) string {
 	var result string
-	var skip int
+	var isSkip bool
 	for i := len(s) - 1; i > -1; i-- {
 		if string(s[i]) == "#" {
-			skip++
+			isSkip = true
 			continue
 		}
-		if skip > 0 {
-			skip--
+		if isSkip {
+			isSkip = false
 			continue
 		}
 		result = string(s[i]) + result
