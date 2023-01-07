@@ -9,7 +9,7 @@ import (
 func Test_removeElement(t *testing.T) {
 	type args struct {
 		nums []int
-		val  int
+		Val  int
 	}
 	tests := []struct {
 		name    string
@@ -21,7 +21,7 @@ func Test_removeElement(t *testing.T) {
 			name: "1st",
 			args: args{
 				nums: []int{3, 2, 2, 3},
-				val:  3,
+				Val:  3,
 			},
 			want:    2,
 			wantArr: []int{2, 2, 2, 3},
@@ -29,7 +29,7 @@ func Test_removeElement(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := removeElement(tt.args.nums, tt.args.val); got != tt.want {
+			if got := removeElement(tt.args.nums, tt.args.Val); got != tt.want {
 				t.Errorf("removeElement() = %v, want %v", got, tt.want)
 			}
 			if diff := cmp.Diff(tt.args.nums, tt.wantArr); diff != "" {

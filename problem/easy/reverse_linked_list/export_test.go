@@ -22,23 +22,23 @@ func getTestCase() []testcase {
 			name: "1st",
 			args: args{
 				head: &listNode{
-					val: 1,
-					next: &listNode{
-						val: 2,
-						next: &listNode{
-							val:  3,
-							next: nil,
+					Val: 1,
+					Next: &listNode{
+						Val: 2,
+						Next: &listNode{
+							Val:  3,
+							Next: nil,
 						},
 					},
 				},
 			},
 			want: &listNode{
-				val: 3,
-				next: &listNode{
-					val: 2,
-					next: &listNode{
-						val:  1,
-						next: nil,
+				Val: 3,
+				Next: &listNode{
+					Val: 2,
+					Next: &listNode{
+						Val:  1,
+						Next: nil,
 					},
 				},
 			},
@@ -50,6 +50,18 @@ func Test_reverseList(t *testing.T) {
 	for _, tt := range getTestCase() {
 		t.Run(tt.name, func(t *testing.T) {
 			got := reverseList(tt.args.head)
+			opt := cmp.AllowUnexported(listNode{})
+			if diff := cmp.Diff(got, tt.want, opt); diff != "" {
+				t.Errorf("error: unexpected diff; %s", diff)
+			}
+		})
+	}
+}
+
+func Test_reverseListRecurcively(t *testing.T) {
+	for _, tt := range getTestCase() {
+		t.Run(tt.name, func(t *testing.T) {
+			got := reveseListRecursively(tt.args.head)
 			opt := cmp.AllowUnexported(listNode{})
 			if diff := cmp.Diff(got, tt.want, opt); diff != "" {
 				t.Errorf("error: unexpected diff; %s", diff)
