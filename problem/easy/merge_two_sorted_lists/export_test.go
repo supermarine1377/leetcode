@@ -60,6 +60,38 @@ func getTestCases() []testcase {
 				},
 			},
 		},
+		{
+			name: "2nd",
+			args: args{
+				list1: &ListNode{
+					Val: 1,
+				},
+				list2: nil,
+			},
+			want: &ListNode{
+				Val: 1,
+			},
+		},
+		{
+			name: "3rd",
+			args: args{
+				list1: nil,
+				list2: &ListNode{
+					Val: 1,
+				},
+			},
+			want: &ListNode{
+				Val: 1,
+			},
+		},
+		{
+			name: "4th",
+			args: args{
+				list1: nil,
+				list2: nil,
+			},
+			want: nil,
+		},
 	}
 }
 
