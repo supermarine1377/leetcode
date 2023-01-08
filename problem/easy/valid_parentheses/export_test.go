@@ -10,15 +10,17 @@ package valid_parentheses
 
 import "testing"
 
-func Test_isValid(t *testing.T) {
-	type args struct {
-		s string
-	}
-	tests := []struct {
-		name string
-		args args
-		want bool
-	}{
+type args struct {
+	s string
+}
+type testcase struct {
+	name string
+	args args
+	want bool
+}
+
+func getTestCases() []testcase {
+	return []testcase{
 		{
 			name: "1st",
 			args: args{
@@ -62,9 +64,22 @@ func Test_isValid(t *testing.T) {
 			want: true,
 		},
 	}
-	for _, tt := range tests {
+}
+
+func Test_isValid(t *testing.T) {
+	for _, tt := range getTestCases() {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := isValid(tt.args.s); got != tt.want {
+				t.Errorf("isValid() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_isValid_Myans(t *testing.T) {
+	for _, tt := range getTestCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isValid_Myans(tt.args.s); got != tt.want {
 				t.Errorf("isValid() = %v, want %v", got, tt.want)
 			}
 		})
