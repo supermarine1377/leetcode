@@ -37,17 +37,13 @@ func maxDepthBFS(root *TreeNode) int {
 }
 
 func maxDepthDFS(root *TreeNode) int {
-	if root == nil {
-		return 0
-	}
-
 	type node struct {
 		*TreeNode
 		level int
 	}
 	var st []node
 	st = append(st, node{root, 1})
-	result := 1
+	result := 0
 	for len(st) != 0 {
 		bottom := st[len(st)-1]
 		st = st[0 : len(st)-1]
