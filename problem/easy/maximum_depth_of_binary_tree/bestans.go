@@ -14,3 +14,50 @@ func maxDepthRecursively(root *TreeNode) int {
 	}
 	return 1 + rightDepth
 }
+
+func maxDepthBFS(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+	level := 0
+	q := []*TreeNode{root}
+	for len(q) > 0 {
+		for _, node := range q {
+			q = q[1:]
+			if node.Left != nil {
+				q = append(q, node.Left)
+			}
+			if node.Right != nil {
+				q = append(q, node.Right)
+			}
+		}
+		level++
+	}
+	return level
+}
+
+func maxDepthDFS(root *TreeNode) int {
+	if root == nil {
+		return 0
+	}
+
+	type node struct {
+		*TreeNode
+		level int
+	}
+	var st []node
+	st = append(st, node{root, 1})
+	result := 1
+	for len(st) != 0 {
+		bottom := st[len(st)-1]
+		st = st[0 : len(st)-1]
+		if bottom.TreeNode != nil {
+			if bottom.level > result {
+				result = bottom.level
+			}
+			st = append(st, node{bottom.Left, bottom.level + 1})
+			st = append(st, node{bottom.Right, bottom.level + 1})
+		}
+	}
+	return result
+}
