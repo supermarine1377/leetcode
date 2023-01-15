@@ -84,3 +84,13 @@ func Test_maxDepthDFS(t *testing.T) {
 		})
 	}
 }
+
+func Test_maxDepthBFS_myans(t *testing.T) {
+	for _, tt := range getTeseCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := maxDepthBFS_myans(tt.args.root); got != tt.want {
+				t.Errorf("maxDepthRecursively() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
