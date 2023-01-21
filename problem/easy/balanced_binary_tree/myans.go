@@ -4,6 +4,8 @@ import "github.com/supermarine1377/leetcode/types"
 
 type TreeNode = types.TreeNode
 
+// Time Complexity: O(n^2) in case of full binary tree.
+// Auxiliary Space: O(n) space for call stack since using recursion
 func isBalanced(root *TreeNode) bool {
 	if root == nil {
 		return true
