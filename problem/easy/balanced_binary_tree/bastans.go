@@ -1,7 +1,8 @@
 package balanced_binary_tree
 
 // Time Complexity: O(n) in case of full binary tree.
-// Auxiliary Space: O(n) space for call stack since using recursionfunc isBalanced_ON(root *TreeNode) bool {
+// Auxiliary Space: O(n) space for call stack since using recursion
+func isBalanced_ON(root *TreeNode) bool {
 	if root == nil {
 		return true
 	}
