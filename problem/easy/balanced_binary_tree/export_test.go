@@ -67,3 +67,13 @@ func Test_isBalanced(t *testing.T) {
 		})
 	}
 }
+
+func Test_isBalanced_ON(t *testing.T) {
+	for _, tt := range getTestCase() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := isBalanced_ON(tt.args.root); got != tt.want {
+				t.Errorf("isBalanced() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
