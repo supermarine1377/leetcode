@@ -1,14 +1,14 @@
 package myans
 
 func removeElement(nums []int, val int) []int {
-	firstIndex := 0
-	for secondIndex := range nums {
-		if nums[secondIndex] != val {
-			nums[firstIndex] = nums[secondIndex]
-			firstIndex++
+	i := 0
+	for j := range nums {
+		if nums[j] != val {
+			nums[i] = nums[j]
+			i++
 		}
 	}
-	return nums[:firstIndex]
+	return nums[:i]
 }
 
 // This solution does repeted-work

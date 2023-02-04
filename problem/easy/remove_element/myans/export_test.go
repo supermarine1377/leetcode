@@ -52,6 +52,14 @@ func getTestCases() []testcase {
 			},
 			want: []int{2, 2},
 		},
+		{
+			name: "5th",
+			args: args{
+				nums: []int{2, 2, 2, 3, 1, 1, 2, 3},
+				val:  3,
+			},
+			want: []int{2, 2, 2, 1, 1, 2},
+		},
 	}
 }
 
