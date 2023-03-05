@@ -2,15 +2,18 @@ package myans
 
 import "testing"
 
-func Test_lengthOfLastWord(t *testing.T) {
-	type args struct {
-		s string
-	}
-	tests := []struct {
-		name string
-		args args
-		want int
-	}{
+type args struct {
+	s string
+}
+
+type testcase struct {
+	name string
+	args args
+	want int
+}
+
+func getTeseCases() []testcase {
+	return []testcase{
 		{
 			name: "1st",
 			args: args{
@@ -26,9 +29,22 @@ func Test_lengthOfLastWord(t *testing.T) {
 			want: 7,
 		},
 	}
-	for _, tt := range tests {
+}
+
+func Test_lengthOfLastWord(t *testing.T) {
+	for _, tt := range getTeseCases() {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := lengthOfLastWord(tt.args.s); got != tt.want {
+				t.Errorf("lengthOfLastWord() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_lengthOfLastWord_Arr(t *testing.T) {
+	for _, tt := range getTeseCases() {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := lengthOfLastWord_Arr(tt.args.s); got != tt.want {
 				t.Errorf("lengthOfLastWord() = %v, want %v", got, tt.want)
 			}
 		})

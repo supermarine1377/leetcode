@@ -12,3 +12,20 @@ func lengthOfLastWord(s string) int {
 	}
 	return 0
 }
+
+func lengthOfLastWord_Arr(s string) int {
+	var word []rune
+	var isSp bool
+	for _, r := range s {
+		if string(r) == " " {
+			isSp = true
+			continue
+		}
+		if isSp && string(r) != " " {
+			word = []rune{}
+		}
+		word = append(word, r)
+		isSp = false
+	}
+	return len(word)
+}
