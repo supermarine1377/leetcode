@@ -10,6 +10,7 @@
       "request": "launch",
       "mode": "test",
       "program": "${workspaceFolder}",
+      "dlvFlags": ["--check-go-version=false"],
       "args": [
         "-test.run",
         "MyTestFunction"
@@ -20,8 +21,8 @@
       "type": "go",
       "request": "attach",
       "mode": "local",
-      "processId": 0
+      "dlvFlags": ["--check-go-version=false"],
+      "processId": 0 
     }
-
   ]
 }
