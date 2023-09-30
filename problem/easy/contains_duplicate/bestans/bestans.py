@@ -1,5 +1,5 @@
 class Solution:
-  def containsDepulicate(nums: list[int]) -> bool:
+  def containsDuplicate(nums: list[int]) -> bool:
     hashset = set()
 
     for num in nums:
