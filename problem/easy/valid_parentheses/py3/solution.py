@@ -1,4 +1,4 @@
-class Solution:
+class Valid_Parentheses:
     def isValid(self, s: str) -> bool:
         st = []
         for ss in s:

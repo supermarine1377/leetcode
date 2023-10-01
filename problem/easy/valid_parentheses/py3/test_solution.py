@@ -1,10 +1,10 @@
 import unittest
-from solution import Solution
+from solution import Valid_Parentheses
 
 
 class TestSolution(unittest.TestCase):
     def test_valid_parentheses(self):
-        solution = Solution()
+        solution = Valid_Parentheses()
         testcases = [
             ["()", True],
             ["()[]{}", True],
