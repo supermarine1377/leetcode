@@ -1,5 +1,5 @@
 import unittest
-from solution import Solution
+from two_sum import Solution
 
 
 class TestSolution(unittest.TestCase):
