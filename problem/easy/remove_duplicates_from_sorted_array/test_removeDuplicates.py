@@ -1,5 +1,5 @@
 import unittest
-import myans as remove_duplicates_from_sorted_array_myans
+import removeDuplicates as remove_duplicates_from_sorted_array_myans
 
 class Testbestans(unittest.TestCase):
   
